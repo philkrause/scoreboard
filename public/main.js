@@ -1,27 +1,30 @@
 let teams1Score = 0
 let teams2Score = 0
 let maxSec = 60
-let maxMin = 12
+let maxMin = 1
 
 const myTimer = () => {
-  maxSec -= 1
-  document.querySelector('.timerSecond').textContent = maxSec
+  if (maxMin == 0) {
+    return 0
+  } else {
+    if (maxSec > 0 && maxMin > 0) {
+      maxSec -= 1
+    } else {
+      maxSec = 60
+      maxMin -= 1
+    }
+    document.querySelector('.timerSecond').textContent = maxSec
+    document.querySelector('.timerMinute').textContent = maxMin
+  }
 }
-
 const oneSecondCount = setInterval(myTimer, 1000)
 
-if ((maxSec = 0)) {
-  maxSec += 0
-  maxMin -= 1
-  document.querySelector('.timerMinute').textContent = maxMin
-}
+// if ((maxSec = 0)) {
+//   maxSec += 0
+//   maxMin -= 1
+//   document.querySelector('.timerMinute').textContent = maxMin
+// }
 
-const updateTeamScore = () => {
-  document.querySelector('.team1Score').textContent = teams1Score
-}
-const updateTeam2Score = () => {
-  document.querySelector('.team2Score').textContent = teams2Score
-}
 const updateTeam1 = () => {
   const team1 = document.querySelector('.team-name1').value
   console.log(team1)
@@ -37,23 +40,23 @@ const updateTeam2 = () => {
 const buttonTeamScore1 = () => {
   console.log('button was clicked')
   teams1Score += 1
-  updateTeamScore()
+  document.querySelector('.team1Score').textContent = teams1Score
 }
 const buttonTeamScore2 = () => {
   console.log('button3 was clicked')
   teams2Score += 1
-  updateTeam2Score()
+  document.querySelector('.team2Score').textContent = teams2Score
 }
 
 const buttonTeamScoreSub1 = () => {
   console.log('button2 was clicked')
   teams1Score -= 1
-  updateTeamScore()
+  document.querySelector('.team1Score').textContent = teams1Score
 }
 const buttonTeam2ScoreSub = () => {
   console.log('button4was clicked')
   teams2Score -= 1
-  updateTeam2Score()
+  document.querySelector('.team2Score').textContent = teams2Score
 }
 
 document
