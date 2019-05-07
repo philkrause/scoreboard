@@ -45,3 +45,19 @@ h1 {
   font-size: 5rem;
   color: red;
 }
+
+.display-winner1 {
+  font-size: 2rem;
+  color: blue;
+}
+
+.display-winner2 {
+  font-size: 2rem;
+  color: purple;
+}
+
+.display-draw {
+  font-size: 2rem;
+  text-align: center;
+  color: green;
+}

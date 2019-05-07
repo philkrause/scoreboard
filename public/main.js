@@ -1,22 +1,44 @@
 let teams1Score = 0
 let teams2Score = 0
-let maxSec = 60
-let maxMin = 1
+let maxSec = 10
+let maxMin = 0
 
 const myTimer = () => {
   if (maxSec > 0 && maxMin >= 0) {
     maxSec -= 1
+    console.log(maxMin)
   }
   if (maxSec === 0 && maxMin > 0) {
     maxSec = 60
     maxMin -= 1
   }
-  if (maxSec === 0 && maxMin === 0) {
+  if (maxSec === 0 && maxMin >= 0) {
     maxSec = 0
     maxMin = 0
   }
   document.querySelector('.timerSecond').textContent = maxSec
   document.querySelector('.timerMinute').textContent = maxMin
+  if (maxSec === 0 && maxMin >= 0 && teams1Score === teams2Score) {
+    document.querySelector('.display-draw').textContent = 'We have a DRAW'
+    document
+      .querySelectorAll('button')
+      .forEach(button => (button.disabled = true))
+    console.log(document.querySelectorAll('button'))
+  }
+  if (maxSec === 0 && maxMin >= 0 && teams1Score > teams2Score) {
+    document.querySelector(
+      '.display-winner1'
+    ).textContent = 'Team 1 Wins!!'
+      .querySelectorAll('button')
+      .forEach(button => (button.disabled = true))
+  }
+  if (maxSec === 0 && maxMin >= 0 && teams1Score < teams2Score) {
+    document.querySelector(
+      '.display-winner2'
+    ).textContent = 'Team 2 Wins!!'
+      .querySelectorAll('button')
+      .forEach(button => (button.disabled = true))
+  }
 }
 const oneSecondCount = setInterval(myTimer, 1000)
 
