@@ -1,20 +1,21 @@
 let teams1Score = 0
 let teams2Score = 0
 let maxSec = 10
-let maxMin = 0
+let maxMin = 1
 
 const myTimer = () => {
   if (maxSec > 0 && maxMin >= 0) {
     maxSec -= 1
-    console.log(maxMin)
+    console.log(maxSec)
   }
   if (maxSec === 0 && maxMin > 0) {
     maxSec = 60
     maxMin -= 1
   }
-  if (maxSec === 0 && maxMin >= 0) {
+  if (maxSec === 0 && maxMin === 0) {
     maxSec = 0
     maxMin = 0
+    // return 0
   }
   document.querySelector('.timerSecond').textContent = maxSec
   document.querySelector('.timerMinute').textContent = maxMin
@@ -32,7 +33,7 @@ const myTimer = () => {
       .querySelectorAll('button')
       .forEach(button => (button.disabled = true))
   }
-  if (maxSec === 0 && maxMin >= 0 && teams1Score < teams2Score) {
+  if (maxSec === 0 && maxMin === 0 && teams1Score < teams2Score) {
     document.querySelector(
       '.display-winner2'
     ).textContent = 'Team 2 Wins!!'
@@ -40,7 +41,8 @@ const myTimer = () => {
       .forEach(button => (button.disabled = true))
   }
 }
-const oneSecondCount = setInterval(myTimer, 1000)
+
+oneSecondCount = setInterval(myTimer, 1000)
 
 const updateTeam1 = () => {
   const team1 = document.querySelector('.team-name1').value
@@ -92,3 +94,5 @@ document
 document
   .querySelector('.update-team-2-name')
   .addEventListener('click', updateTeam2)
+
+// document.querySelector('timer-button').addEventListener('click', oneSecondCount)
